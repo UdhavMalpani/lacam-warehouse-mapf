@@ -1,0 +1,10 @@
+<section id="animation" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Inside LaCAM · the same instance, side by side</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Dead-end aisles: PIBT stalls, LaCAM* finishes</h2>
+<img src="/_blob/195eae59641b6017ba7abbc9cd27f51e" alt="Animation of 100 robots on the dead-end narrow-aisle layout. Left: plain PIBT, which stops making progress with 94 to 95 of 100 agents on their goals. Right: LaCAM*, which brings all 100 agents to their goals at timestep 177." style="width:1664px;height:520px;object-fit:contain">
+<div style="display:flex;gap:56px;padding:20px 0 0">
+<p style="flex:1;font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Dark dots</span> are agents still travelling or waiting; <span style="color:#121820;font-weight:600">light dots</span> are parked on their goal.</p>
+<p style="flex:1;font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Left:</span> PIBT never gets past 95 of 100. <span style="color:#121820;font-weight:600">Right:</span> LaCAM* finishes at timestep 177, the lower bound for this instance.</p>
+</div>
+<aside>This animation plays the same 100-agent instance on the dead-end aisle layout. On the left, plain PIBT: by around timestep 170 about 94 agents are parked, and the remaining ones keep shuffling at aisle entrances without ever finishing. On the right, LaCAM*: everyone is home at timestep 177, which equals the makespan lower bound (the longest single shortest path) for this instance. In a deck export the GIF may be flattened to one frame; the strip image in the figures folder shows the key frames.</aside>
+</section>

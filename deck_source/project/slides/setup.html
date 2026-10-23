@@ -1,0 +1,18 @@
+<section id="setup" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Experimental setup</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">12 maps, up to 1,000 agents, 7 planners</h2>
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/2b350e5baa57dfb695e9949351f3b91f" alt="Gallery of the 12 benchmark maps: four MovingAI warehouses, three custom warehouse layouts (sortation floor, dead-end narrow aisles, open cross-dock), and five other domains (random obstacles, rooms, maze, game map, city map)" style="width:1060px;height:698px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:12px 0 0">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Protocol</h3>
+<ul style="font-size:30px;line-height:1.35;color:#3F4652">
+<li>Official code for EECBS, MAPF-LNS2, PBS; same compiler for all</li>
+<li>30 s per run; first solution counts</li>
+<li>10 scenarios per point on warehouses, 5 elsewhere</li>
+<li>760 instances per planner, 4,500 runs executed</li>
+<li>Every solution re-checked; 0 invalid</li>
+</ul>
+</div>
+</div>
+<aside>The warehouse settings are the four MovingAI warehouse maps (small and large, 1-wide and 2-wide aisles) plus three layouts I generated: a sortation floor (2 by 2 chute blocks separated by 1-wide lanes), a very-narrow-aisle racking area where every aisle is a dead end, and an open cross-dock floor. The other domains are standard MovingAI maps: random obstacles, rooms, a maze, a game map and a city map. Agent counts go up to 1,000 (400 and 350 on the two small maps). Every planner ran on the same instances with a 30 second limit and returns its first solution. If a planner solved none of the instances at some agent count, larger counts on that map were counted as failures without running them (820 of the 5,320 planner-instance pairs). All solutions were re-validated by one independent checker and all costs recomputed the same way.</aside>
+</section>

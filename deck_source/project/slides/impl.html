@@ -1,0 +1,25 @@
+<section id="impl" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">What was built</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Re-implemented, then checked against the original</h2>
+<div style="display:flex;gap:56px;padding:28px 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Code</h3>
+<ul style="font-size:30px;line-height:1.4;color:#3F4652">
+<li>C++17, about 1,300 lines: PIBT step (with optional swap), LaCAM and LaCAM* search, standalone PIBT, solution checker</li>
+<li>One PIBT routine shared by all three, so PIBT vs LaCAM isolates the search layer</li>
+<li>Baselines: the authors' own EECBS, MAPF-LNS2 and PBS code, same compiler, portability fixes only</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Fidelity: same seed, 48 instances</h3>
+<table style="font-size:28px;color:#3F4652">
+<tr><th style="width:34%;text-align:left">Check</th><th style="width:33%;text-align:right">LaCAM</th><th style="width:33%;text-align:right">LaCAM*</th></tr>
+<tr><td>Same success / failure</td><td style="text-align:right">48 / 48</td><td style="text-align:right">48 / 48</td></tr>
+<tr><td>Identical plans</td><td style="text-align:right">38 / 38</td><td style="text-align:right">48 / 48 *</td></tr>
+<tr><td>Time, ours ÷ official</td><td style="text-align:right">0.81</td><td style="text-align:right">0.87</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#6B7079">* 46 / 48 against the official LaCAM* as published: its distance table reads a popped queue element (undefined behaviour) and gives wrong distances under MSVC. One line fixed, 48 / 48.</p>
+</div>
+</div>
+<aside>I wrote LaCAM and LaCAM* from the papers in C++17, about 1,300 lines, with one PIBT routine shared by standalone PIBT, LaCAM and LaCAM*. Because the shared code is identical, the difference between PIBT and LaCAM in the results is exactly the effect of LaCAM's search. To validate the re-implementation I built the official LaCAM and LaCAM* code and ran both versions on 48 instances across all 12 maps with the same random seed. The outcomes agree on all 48 instances, including which ones fail within the time limit. Plans are identical in every instance the original LaCAM solves. For LaCAM* they are identical in 46 of 48 against the official code as published. I traced the other two to a bug in the official code: its distance table keeps a reference to a queue element after popping it, which is undefined behaviour and gives wrong distances under the Microsoft compiler, so its search starts with the wrong agent order (its output even shows an impossible makespan lower bound equal to the number of vertices). With that one line fixed, the official code and mine agree on all 48 instances. My version takes about 0.8 times as long at the median. The baselines are not re-implementations: they are the authors' own code, compiled with the same compiler and flags, with only Windows portability fixes.</aside>
+</section>

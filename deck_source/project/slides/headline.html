@@ -1,0 +1,23 @@
+<section id="headline" data-transition="fade" style="background:#121820;color:#C9CED6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#6DA7EC">Results in four numbers</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#F2F1EC">LaCAM* never failed, and was 35–84× faster</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:36px 0 0">
+<div style="display:flex;flex-direction:column;gap:8px;background:#1B2430;padding:36px 44px;border-radius:16px">
+<p style="font-size:104px;font-weight:600;line-height:1.05;color:#6DA7EC">760 / 760</p>
+<p style="font-size:30px;line-height:1.35;color:#C9CED6">instances solved by LaCAM*. Best of the three baselines: MAPF-LNS2 with 654.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#1B2430;padding:36px 44px;border-radius:16px">
+<p style="font-size:104px;font-weight:600;line-height:1.05;color:#6DA7EC">45 ms</p>
+<p style="font-size:30px;line-height:1.35;color:#C9CED6">median time to solution on warehouse maps; at most 0.65 s median at 1,000 agents.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#1B2430;padding:36px 44px;border-radius:16px">
+<p style="font-size:104px;font-weight:600;line-height:1.05;color:#6DA7EC">35–84×</p>
+<p style="font-size:30px;line-height:1.35;color:#C9CED6">faster than MAPF-LNS2, EECBS and PBS on the instances both solved (median).</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#1B2430;padding:36px 44px;border-radius:16px">
+<p style="font-size:104px;font-weight:600;line-height:1.05;color:#F2A27E">+14–31 %</p>
+<p style="font-size:30px;line-height:1.35;color:#C9CED6">higher sum-of-costs than those three on the same instances: the price of speed.</p>
+</div>
+</div>
+<aside>The four headline numbers. LaCAM* solved all 760 instances within 30 seconds, the only planner to do so. The three state-of-the-art baselines solved 654 (MAPF-LNS2), 535 (EECBS) and 376 (PBS); of my own variants, PIBT with the swap rule solved 725, the original LaCAM 536 and plain PIBT 411. Median time to solution on warehouse maps was 45 milliseconds, and even at 1,000 agents the per-map median stayed below 0.65 seconds. On instances that both planners solved, the paired median speed-up of LaCAM* was 35x over MAPF-LNS2, 44x over EECBS and 84x over PBS. The trade-off is solution quality: on the same instances LaCAM*'s sum-of-costs is 14% higher than MAPF-LNS2's, 26% higher than PBS's and 31% higher than EECBS's (EECBS with suboptimality bound 1.2).</aside>
+</section>

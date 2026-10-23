@@ -1,0 +1,13 @@
+<section id="success-other" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Results · success rate, other domains</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Outside the warehouse the picture holds</h2>
+<div style="display:flex;gap:40px;align-items:start">
+<img src="/_blob/4b0329c21325980931136116bbbf4b7b" alt="Success rate versus number of agents on five non-warehouse maps: random-32-32-20, room-64-64-8, maze-32-32-4, den520d and Paris_1_256. LaCAM* stays at 100 percent on all of them; PBS and EECBS fail first in rooms, random obstacles and the maze." style="width:1240px;height:730px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px;padding:40px 0 0">
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">LaCAM*: 200 / 200.</span> The original LaCAM reaches 180; it struggles only in the maze.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Rooms and doors</span> are hardest for search: EECBS and PBS solve only the 100-agent runs.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Large open maps</span> (game, city) are easy for all but PBS; EECBS solves 60–80 % at 1,000 agents.</p>
+</div>
+</div>
+<aside>The same comparison on five non-warehouse MovingAI maps, 5 instances per point. LaCAM* again solves everything. The original LaCAM is strong outside the warehouse (180 of 200), failing mostly in the maze, which is full of 1-wide corridors, the same weakness as in warehouse aisles. Rooms with narrow doors are the hardest map for the search-based baselines: EECBS and PBS solve only the smallest instances there, and MAPF-LNS2 stops at 600 agents. On the big open game and city maps everything except PBS scales to 1,000 agents; EECBS solves 60% (game map) and 80% (city map) of the 1,000-agent instances.</aside>
+</section>

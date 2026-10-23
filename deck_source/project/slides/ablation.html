@@ -1,0 +1,22 @@
+<section id="ablation" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Inside LaCAM · ablation</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Search and swap fix different failures</h2>
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/096b08aa694aafa23eebf459a6fca44d" alt="Heat-map table of instances solved per map for four variants: PIBT, PIBT plus swap, LaCAM without swap, and LaCAM*. Warehouse-10-20-10-2-1: 5, 98, 25 and 100 percent. Narrowaisle: 0, 62, 0 and 100 percent. Random-32-32-20: 35, 92, 100 and 100 percent. Maze: 40, 100, 50 and 100 percent." style="width:1134px;height:740px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:32px;padding:56px 0 0">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">1-wide aisles, maze</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Swap does it.</span> warehouse-10-20-10-2-1: PIBT 5 %, with swap 98 %, LaCAM 25 %.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">random obstacles</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Search does it.</span> PIBT with swap 92 %, LaCAM 100 %.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">dead-end aisles</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Both are needed.</span> With swap 62 %, LaCAM 0 %, LaCAM* 100 %.</p>
+</div>
+</div>
+</div>
+<aside>All four columns run the same PIBT code; they differ only in whether the swap technique is on and whether LaCAM's search is on top. In corridor-like layouts (1-wide warehouse aisles, the sortation lanes, the maze) the dominant failure is two agents meeting head-on, and the swap technique alone fixes it: on warehouse-10-20-10-2-1 plain PIBT solves 5%, PIBT with swap 98%, while LaCAM's search without swap only gets to 25% because the corridor deadlock makes its search space explode. On random obstacles the failure is a different kind of cycle that the swap rule cannot break, and the search fixes it: 92% versus 100%. On the dead-end aisle layout you need both: PIBT with swap 62%, LaCAM 0%, LaCAM* 100%. So LaCAM*'s robustness comes from the combination.</aside>
+</section>

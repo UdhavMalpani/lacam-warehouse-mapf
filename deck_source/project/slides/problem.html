@@ -1,0 +1,25 @@
+<section id="problem" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">The problem</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Hundreds of robots, one shared floor</h2>
+<div style="display:flex;gap:48px;flex:1;padding:28px 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Multi-agent path finding (MAPF)</h3>
+<ul style="font-size:30px;line-height:1.4;color:#3F4652">
+<li>A grid map; N agents, each with a start and a goal cell</li>
+<li>Every timestep each agent moves to a neighbouring cell or waits</li>
+<li>Never two agents in one cell, never two agents swapping along an edge</li>
+<li>Plan for everyone to reach their goal; measure the sum of arrival times (sum-of-costs)</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Why warehouses make it hard</h3>
+<ul style="font-size:30px;line-height:1.4;color:#3F4652">
+<li>Minimising sum-of-costs is NP-hard, so optimal planners stop scaling at modest team sizes</li>
+<li>Fulfilment and sortation centres run hundreds to thousands of robots</li>
+<li>Shelving creates 1-wide aisles and dead ends where robots meet head-on</li>
+<li>Plans must come in fractions of a second, not minutes</li>
+</ul>
+</div>
+</div>
+<aside>MAPF: given a graph and N agents with start and goal vertices, find a collision-free plan. Conflicts are vertex conflicts (two agents in one cell) and swap conflicts (two agents exchanging positions along one edge); following and rotations are allowed. Quality is measured as sum-of-costs: each agent's cost is the time it finally arrives at its goal. Warehouses are the motivating application: many robots, narrow aisles and dead ends, and a need for very fast planning.</aside>
+</section>

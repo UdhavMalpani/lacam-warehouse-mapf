@@ -1,0 +1,23 @@
+<section id="takeaways" data-transition="fade" style="background:#121820;color:#C9CED6;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#6DA7EC">Takeaways</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#F2F1EC">What this study shows about LaCAM</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:36px 0 0">
+<div style="display:flex;flex-direction:column;gap:12px;background:#1B2430;padding:36px 40px;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6DA7EC">01 · mechanism</p>
+<p style="font-size:30px;line-height:1.4;color:#F2F1EC">LaCAM makes PIBT complete almost for free: it searches only when PIBT starts cycling.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1B2430;padding:36px 40px;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6DA7EC">02 · warehouses</p>
+<p style="font-size:30px;line-height:1.4;color:#F2F1EC">The swap technique is essential: 1-wide and dead-end aisles break plain PIBT and the original LaCAM.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1B2430;padding:36px 40px;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6DA7EC">03 · versus the state of the art</p>
+<p style="font-size:30px;line-height:1.4;color:#F2F1EC">LaCAM* solved 760 of 760 instances, median 45 ms on warehouses, 35–84× faster than EECBS, MAPF-LNS2 and PBS.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1B2430;padding:36px 40px;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#F2A27E">04 · the price</p>
+<p style="font-size:30px;line-height:1.4;color:#F2F1EC">Plans cost 14–31 % more, and LaCAM*'s own refinement barely helps; polish its first plan with LNS instead.</p>
+</div>
+</div>
+<aside>Four things to remember. One: LaCAM is a thin layer over PIBT. When PIBT works, LaCAM's search costs nothing extra; when PIBT starts cycling, LaCAM detects the repeated configuration and searches around it, which makes the planner complete. Two: in warehouses the swap technique matters as much as the search, because head-on encounters in 1-wide aisles and dead ends are the dominant failure. Three: LaCAM* was the only planner to solve all 760 instances, with a median of 45 ms on warehouse maps, 35 to 84 times faster than the state-of-the-art baselines on the instances they also solved. Four: the trade-off is quality, 14 to 31% higher sum-of-costs, and LaCAM*'s built-in refinement improves only about 2% within a minute, so for quality one should hand its first plan to an LNS refiner.</aside>
+</section>

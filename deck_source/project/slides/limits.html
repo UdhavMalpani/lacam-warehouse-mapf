@@ -1,0 +1,26 @@
+<section id="limits" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Caveats</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Limitations and next steps</h2>
+<div style="display:flex;gap:48px;padding:28px 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Limitations</h3>
+<ul style="font-size:30px;line-height:1.4;color:#3F4652">
+<li>One laptop, 4 runs in parallel: compare runtimes relative to each other, not as absolute numbers</li>
+<li>One-shot MAPF; real warehouses assign new tasks continuously</li>
+<li>Custom layouts use uniformly random tasks, not order profiles</li>
+<li>1.2 GB memory cap per run, binding for 25 original-LaCAM runs and for LaCAM* refinement</li>
+<li>Baselines at default settings, e.g. EECBS with bound 1.2</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:40px;font-weight:600;color:#121820">Next steps</h3>
+<ul style="font-size:30px;line-height:1.4;color:#3F4652">
+<li>Lifelong planning: replan LaCAM* as robots receive new tasks</li>
+<li>Refine LaCAM*'s first solution with LNS and measure the gap that remains</li>
+<li>Warehouse task streams: pick stations, shelves, charging</li>
+<li>Larger fleets (2,000+ agents) on the large warehouse maps</li>
+</ul>
+</div>
+</div>
+<aside>Limitations: all runs were on one laptop (Ryzen 7 7840HS, Windows 11) with four runs in parallel, so absolute times would differ on a server, but every planner faced the same conditions and was compiled with the same compiler and flags. The study is one-shot MAPF; a real warehouse is lifelong, with tasks arriving continuously, which is the next natural experiment. The custom layouts use uniformly random start and goal cells rather than realistic pick-station traffic. A 1.2 GB per-run memory cap was needed on this machine; it ended 25 original-LaCAM runs early (all on instances where it was struggling anyway) and limits LaCAM*'s refinement. The baselines were run at their default settings; for example EECBS with a larger suboptimality bound would be faster but costlier.</aside>
+</section>

@@ -1,0 +1,25 @@
+<section id="pibt" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Background · PIBT (Okumura et al., 2019 / 2022)</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">PIBT plans one timestep at a time</h2>
+<div style="display:flex;gap:32px;padding:36px 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFE;padding:40px;border:2px solid #E1E0D9;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">1 · priorities</p>
+<h3 style="font-size:40px;font-weight:600;color:#121820">Longest-waiting first</h3>
+<p style="font-size:30px;line-height:1.4">An agent's priority grows every step it is away from its goal and resets once it arrives.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFE;padding:40px;border:2px solid #E1E0D9;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">2 · inheritance</p>
+<h3 style="font-size:40px;font-weight:600;color:#121820">Push the blocker</h3>
+<p style="font-size:30px;line-height:1.4">If my best next cell is occupied, its occupant inherits my priority and must move out first, recursively.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFE;padding:40px;border:2px solid #E1E0D9;border-radius:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">3 · backtracking</p>
+<h3 style="font-size:40px;font-weight:600;color:#121820">Try the next cell</h3>
+<p style="font-size:30px;line-height:1.4">If the occupant cannot move, I fall back to my next-best cell, ending with waiting in place.</p>
+</div>
+</div>
+<div style="display:flex;gap:24px;align-items:center;background:#F2F1EC;padding:28px 40px;border-radius:16px">
+<p style="font-size:30px;line-height:1.4;color:#121820"><b>Fast</b> (one step for all agents in roughly linear time) <b>but incomplete:</b> agents can circle forever a few cells from their goals. Run alone, it solved 411 of our 760 instances.</p>
+</div>
+<aside>PIBT decides only the next step for all agents. Agents are ordered by priority; the highest-priority agent picks its best neighbouring cell by distance to goal. If that cell is occupied by an agent that has not moved yet, that agent inherits the priority and must vacate first. If it cannot, the original agent backtracks to its next option. This gives one valid joint move in roughly linear time per step, which is why it scales to thousands of agents. But it is myopic: in our benchmark plain PIBT solved only 411 of 760 instances (54%) because it livelocks, which a later slide shows directly.</aside>
+</section>

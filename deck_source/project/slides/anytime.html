@@ -1,0 +1,13 @@
+<section id="anytime" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Inside LaCAM · anytime refinement, 60 s</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">Refinement: LaCAM* stalls, MAPF-LNS keeps going</h2>
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/c92baef6526f325c048d3fe25ff22014" alt="Dumbbell chart for 15 cases (five maps at three agent counts). Each planner has a line from its first-solution cost (hollow marker) to its cost after 60 seconds (filled marker), as sum-of-costs over lower bound. LaCAM* lines are very short, typically 1 to 3 percent; MAPF-LNS lines are long, typically 9 to 16 percent, and end well to the left of LaCAM*." style="width:1203px;height:740px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:30px;padding:72px 0 0">
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">LaCAM*: −1.7 %</span> median in 60 s. It stores every configuration, so 33 of 45 runs hit the 1.2 GB cap.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">MAPF-LNS: −11.4 %</span> median, up to −21 %.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">But LaCAM* answers 37× sooner:</span> 14 ms versus 0.5 s to the first solution.</p>
+</div>
+</div>
+<aside>Here both planners were allowed 60 seconds to keep improving: LaCAM* with its built-in refinement (re-wiring plus pruning, eventually optimal) and MAPF-LNS, which starts from the LNS2 solution and repeatedly re-plans small groups of agents. Each line goes from the first solution (hollow marker) to the cost after 60 seconds (filled marker), median of 3 instances. LaCAM*'s refinement improved the cost by only 1.7% at the median (8% at best). It keeps every explored configuration in memory, and 33 of 45 runs reached the 1.2 GB per-run cap after a median of 19 seconds. MAPF-LNS improved by 11.4% at the median and up to 21%, ending about 1.33 times cheaper than LaCAM*. But LaCAM* produced its first solution in 14 ms versus 0.5 s. A natural next step is to polish LaCAM*'s first plan with an LNS-style refiner. The follow-up paper "Engineering LaCAM*" (Okumura, AAMAS 2024) addresses this solution-quality gap with further improvement techniques; I did not evaluate it.</aside>
+</section>

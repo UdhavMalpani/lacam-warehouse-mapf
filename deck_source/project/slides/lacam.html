@@ -1,0 +1,35 @@
+<section id="lacam" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Background · LaCAM (Okumura, AAAI 2023)</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">LaCAM wraps PIBT in a search over configurations</h2>
+<p style="position:absolute;left:128px;top:270px;width:960px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6B7079">High level · depth-first search over whole-team positions</p>
+<div style="position:absolute;left:128px;top:320px;width:180px;height:96px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;font-weight:600;color:#121820">Q0 start</p></div>
+<div style="position:absolute;left:368px;top:320px;width:180px;height:96px;background:#EAF2FC;border:3px solid #2A78D6;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;font-weight:600;color:#121820">Q1</p></div>
+<div style="position:absolute;left:608px;top:320px;width:180px;height:96px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;font-weight:600;color:#121820">Q2</p></div>
+<div style="position:absolute;left:848px;top:320px;width:180px;height:96px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;font-weight:600;color:#121820">goal</p></div>
+<x-connector x1="308" y1="368" x2="368" y2="368" head="end" style="color:#6B7079;border-width:3px"></x-connector>
+<x-connector x1="548" y1="368" x2="608" y2="368" head="end" style="color:#6B7079;border-width:3px"></x-connector>
+<x-connector x1="788" y1="368" x2="848" y2="368" head="end" style="color:#6B7079;border-width:3px"></x-connector>
+<p style="position:absolute;left:128px;top:470px;width:960px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6B7079">Low level · Q1's constraint tree, grown lazily</p>
+<x-connector x1="458" y1="416" x2="458" y2="530" head="end" style="color:#2A78D6;border-width:3px;border-style:dashed"></x-connector>
+<div style="position:absolute;left:308px;top:530px;width:300px;height:88px;background:#FFFFFE;border:2px solid #2A78D6;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;color:#121820">no constraint</p></div>
+<div style="position:absolute;left:128px;top:700px;width:250px;height:88px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;color:#121820">agent 7 → left</p></div>
+<div style="position:absolute;left:408px;top:700px;width:250px;height:88px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;color:#121820">agent 7 → up</p></div>
+<div style="position:absolute;left:688px;top:700px;width:250px;height:88px;background:#FFFFFE;border:2px solid #C9CDD3;border-radius:14px;display:flex;align-items:center;justify-content:center"><p style="font-size:30px;color:#121820">agent 7 waits</p></div>
+<x-connector x1="458" y1="618" x2="253" y2="700" head="end" style="color:#6B7079;border-width:2px"></x-connector>
+<x-connector x1="458" y1="618" x2="533" y2="700" head="end" style="color:#6B7079;border-width:2px"></x-connector>
+<x-connector x1="458" y1="618" x2="813" y2="700" head="end" style="color:#6B7079;border-width:2px"></x-connector>
+<p style="position:absolute;left:128px;top:818px;width:960px;font-size:24px;line-height:1.4;color:#6B7079">Each level fixes the move of one more agent; PIBT plans everyone else.</p>
+<div style="position:absolute;left:1160px;top:270px;width:632px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#6B7079">One iteration</p>
+<ol style="font-size:30px;line-height:1.35;color:#3F4652">
+<li>Look at the configuration Q on top of the stack.</li>
+<li>Take Q's next constraint and add its children to the tree.</li>
+<li>PIBT moves all other agents, giving a new configuration Q′.</li>
+<li>Q′ is new: push it. Q′ seen before means PIBT is cycling: revisit the old node and keep trying constraints.</li>
+</ol>
+<div style="background:#F2F1EC;padding:24px 28px;border-radius:14px">
+<p style="font-size:30px;line-height:1.35;color:#121820"><b>Complete:</b> the trees eventually list every successor, so a solution is found whenever one exists.</p>
+</div>
+</div>
+<aside>LaCAM's high level is a depth-first search where each node is a configuration (the positions of all agents). Instead of enumerating the exponentially many successors, each node owns a constraint tree that is grown lazily: the root has no constraint, depth-1 nodes fix the next move of the highest-priority agent, depth-2 nodes also fix the second agent, and so on. Every visit pops one constraint and asks PIBT to complete the rest of the team. If PIBT produces a configuration that was already explored, that is exactly PIBT's livelock, detected; LaCAM goes back and tries different constraints. Because the trees eventually enumerate every successor, LaCAM is complete. Because PIBT's first suggestion is usually good, it is also very fast.</aside>
+</section>

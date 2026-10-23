@@ -1,0 +1,35 @@
+diff --git a/lacam2/src/dist_table.cpp b/lacam2/src/dist_table.cpp
+index 2f41264..592cd38 100644
+--- a/lacam2/src/dist_table.cpp
++++ b/lacam2/src/dist_table.cpp
+@@ -36,7 +36,9 @@ uint DistTable::get(uint i, uint v_id)
+    */
+ 
+   while (!OPEN[i].empty()) {
+-    auto&& n = OPEN[i].front();
++    // [local fix] copy the element before pop(): the original `auto&& n = front()` kept a
++    // reference to a destroyed queue element (undefined behaviour; wrong distances under MSVC)
++    auto n = OPEN[i].front();
+     OPEN[i].pop();
+     const int d_n = table[i][n->id];
+     for (auto&& m : n->neighbor) {
+diff --git a/main.cpp b/main.cpp
+index fef8a94..f943ab9 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -56,8 +56,13 @@ int main(int argc, char* argv[])
+   const auto output_name = program.get<std::string>("output");
+   const auto log_short = program.get<bool>("log_short");
+   const auto N = std::stoi(program.get<std::string>("num"));
+-  const auto ins = scen_name.size() > 0 ? Instance(scen_name, map_name, N)
+-                                        : Instance(map_name, &MT, N);
++  // [MSVC patch] build Instance in place: MSVC copies the result of ?:, and
++  // Instance/Graph own raw pointers without a copy constructor.
++  auto make_instance = [&]() {
++    if (scen_name.size() > 0) return Instance(scen_name, map_name, N);
++    return Instance(map_name, &MT, N);
++  };
++  const auto ins = make_instance();
+   const auto objective =
+       static_cast<Objective>(std::stoi(program.get<std::string>("objective")));
+   const auto restart_rate = std::stof(program.get<std::string>("restart_rate"));

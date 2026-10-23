@@ -1,0 +1,20 @@
+diff --git a/main.cpp b/main.cpp
+index ce2fd51..a08d4af 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -45,8 +45,13 @@ int main(int argc, char* argv[])
+   const auto output_name = program.get<std::string>("output");
+   const auto log_short = program.get<bool>("log_short");
+   const auto N = std::stoi(program.get<std::string>("num"));
+-  const auto ins = scen_name.size() > 0 ? Instance(scen_name, map_name, N)
+-                                        : Instance(map_name, &MT, N);
++  // [MSVC patch] build Instance in place: MSVC copies the result of ?:, and
++  // Instance/Graph own raw pointers without a copy constructor.
++  auto make_instance = [&]() {
++    if (scen_name.size() > 0) return Instance(scen_name, map_name, N);
++    return Instance(map_name, &MT, N);
++  };
++  const auto ins = make_instance();
+   if (!ins.is_valid(1)) return 1;
+ 
+   // solve

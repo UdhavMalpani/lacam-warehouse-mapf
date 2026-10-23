@@ -1,0 +1,5 @@
+* text=auto
+*.bat text eol=crlf
+*.patch -text
+*.map text eol=lf
+*.scen text eol=lf

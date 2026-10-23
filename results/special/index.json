@@ -1,0 +1,156 @@
+{
+ "progress_narrowaisle_N100_s1_pibt": {
+  "kind": "progress",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "pibt"
+ },
+ "progress_narrowaisle_N100_s1_pibt_swap": {
+  "kind": "progress",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "pibt_swap"
+ },
+ "progress_narrowaisle_N100_s1_lacam": {
+  "kind": "progress",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "lacam"
+ },
+ "progress_narrowaisle_N100_s1_lacam_star_first": {
+  "kind": "progress",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "progress_warehouse-10-20-10-2-1_N300_s1_pibt": {
+  "kind": "progress",
+  "map": "warehouse-10-20-10-2-1",
+  "N": 300,
+  "scen": 1,
+  "algo": "pibt"
+ },
+ "progress_warehouse-10-20-10-2-1_N300_s1_pibt_swap": {
+  "kind": "progress",
+  "map": "warehouse-10-20-10-2-1",
+  "N": 300,
+  "scen": 1,
+  "algo": "pibt_swap"
+ },
+ "progress_warehouse-10-20-10-2-1_N300_s1_lacam": {
+  "kind": "progress",
+  "map": "warehouse-10-20-10-2-1",
+  "N": 300,
+  "scen": 1,
+  "algo": "lacam"
+ },
+ "progress_warehouse-10-20-10-2-1_N300_s1_lacam_star_first": {
+  "kind": "progress",
+  "map": "warehouse-10-20-10-2-1",
+  "N": 300,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "progress_sortation_N500_s1_pibt": {
+  "kind": "progress",
+  "map": "sortation",
+  "N": 500,
+  "scen": 1,
+  "algo": "pibt"
+ },
+ "progress_sortation_N500_s1_pibt_swap": {
+  "kind": "progress",
+  "map": "sortation",
+  "N": 500,
+  "scen": 1,
+  "algo": "pibt_swap"
+ },
+ "progress_sortation_N500_s1_lacam": {
+  "kind": "progress",
+  "map": "sortation",
+  "N": 500,
+  "scen": 1,
+  "algo": "lacam"
+ },
+ "progress_sortation_N500_s1_lacam_star_first": {
+  "kind": "progress",
+  "map": "sortation",
+  "N": 500,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "progress_random-32-32-20_N200_s1_pibt": {
+  "kind": "progress",
+  "map": "random-32-32-20",
+  "N": 200,
+  "scen": 1,
+  "algo": "pibt"
+ },
+ "progress_random-32-32-20_N200_s1_pibt_swap": {
+  "kind": "progress",
+  "map": "random-32-32-20",
+  "N": 200,
+  "scen": 1,
+  "algo": "pibt_swap"
+ },
+ "progress_random-32-32-20_N200_s1_lacam": {
+  "kind": "progress",
+  "map": "random-32-32-20",
+  "N": 200,
+  "scen": 1,
+  "algo": "lacam"
+ },
+ "progress_random-32-32-20_N200_s1_lacam_star_first": {
+  "kind": "progress",
+  "map": "random-32-32-20",
+  "N": 200,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_warehouse-10-20-10-2-1_N500_s1_lacam_star_first": {
+  "kind": "solution",
+  "map": "warehouse-10-20-10-2-1",
+  "N": 500,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_sortation_N500_s1_lacam_star_first": {
+  "kind": "solution",
+  "map": "sortation",
+  "N": 500,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_narrowaisle_N300_s1_lacam_star_first": {
+  "kind": "solution",
+  "map": "narrowaisle",
+  "N": 300,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_crossdock_N800_s1_lacam_star_first": {
+  "kind": "solution",
+  "map": "crossdock",
+  "N": 800,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_narrowaisle_N100_s1_lacam_star_first": {
+  "kind": "solution",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "lacam_star_first"
+ },
+ "solution_narrowaisle_N100_s1_pibt_partial": {
+  "kind": "progress",
+  "map": "narrowaisle",
+  "N": 100,
+  "scen": 1,
+  "algo": "pibt"
+ }
+}

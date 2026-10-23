@@ -1,0 +1,5 @@
+// Include shim: MAPF-LNS2 (inc/PIBT/solver.h) includes <eigen3/Eigen/Core>, which only
+// exists with the Debian/Ubuntu layout (/usr/include/eigen3).  The Eigen 3.4 tarball has
+// Eigen/Core at its root, so forward to it (deps/eigen-3.4.0 is on the include path).
+#pragma once
+#include <Eigen/Core>

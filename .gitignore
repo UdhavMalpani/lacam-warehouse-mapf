@@ -1,0 +1,11 @@
+build/
+__pycache__/
+*.pyc
+
+# official solver sources and dependencies: recreated by tools\fetch_third_party.bat
+third_party/*
+!third_party/PATCHES.md
+!third_party/patches/
+
+# MovingAI benchmark downloads (see README)
+data/raw/

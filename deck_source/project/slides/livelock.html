@@ -1,0 +1,13 @@
+<section id="livelock" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Inside LaCAM · why PIBT needs a search</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">PIBT alone livelocks just short of the goal</h2>
+<div style="display:flex;gap:44px;align-items:start">
+<img src="/_blob/9c749117c8e9518910edc79df6f50c4b" alt="Four line charts of agents standing on their goal over the first 600 timesteps, for narrowaisle with 100 agents, warehouse-10-20-10-2-1 with 300, sortation with 500 and random-32-32-20 with 200. LaCAM* reaches 100 percent in every case; plain PIBT plateaus at 94 to 99 percent and never finishes within 10,000 steps." style="width:1120px;height:740px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px;padding:56px 0 0">
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">PIBT gets 95–99.5 % home, then cycles:</span> 95 of 100, 284 of 300, 490 of 500 and 199 of 200 at best, over 10,000 steps.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">LaCAM sees the cycle</span> as a repeated configuration and searches around it.</p>
+<p style="font-size:30px;line-height:1.4"><span style="color:#121820;font-weight:600">Swap or search?</span> In aisles the swap rule alone fixes it; on the random map only the search does.</p>
+</div>
+</div>
+<aside>These traces show the share of agents standing on their goal at each timestep, on four instances where plain PIBT fails. PIBT gets almost everyone home quickly, then a handful of agents cycle forever: at best 95 of 100, 284 of 300, 490 of 500 and 199 of 200 agents, over 10,000 timesteps. This is a livelock: agents with low priority keep being pushed off their goals by others. LaCAM* finishes each in under 300 timesteps. Note the different fixes: in the three aisle layouts PIBT with the swap technique already succeeds, because the deadlock is two agents meeting head-on in a corridor. On random-32-32-20 even PIBT with swap stays stuck at 197 of 200, and only LaCAM's search over configurations gets out, which the original LaCAM, without swap, does in 98 timesteps.</aside>
+</section>

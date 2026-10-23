@@ -1,0 +1,22 @@
+<section id="lacamstar" data-transition="fade" style="background:#FBFBF8;color:#3F4652;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#256ABF">Background · LaCAM* (Okumura, IJCAI 2023)</p>
+<h2 style="font-size:56px;font-weight:600;line-height:1.1;color:#121820">LaCAM* adds two upgrades</h2>
+<div style="display:flex;gap:32px;padding:36px 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFE;padding:44px;border:2px solid #E1E0D9;border-radius:16px">
+<div style="width:96px;height:8px;background:#2A78D6;border-radius:4px"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">inside PIBT</p>
+<h3 style="font-size:40px;font-weight:600;color:#121820">Swap technique</h3>
+<p style="font-size:30px;line-height:1.4">When two agents meet head-on in a corridor, PIBT cannot let them pass. The swap rule detects this and pulls one agent back to the nearest junction so the pair can exchange places.</p>
+<p style="font-size:30px;line-height:1.4;color:#121820"><b>Matters in 1-wide aisles and dead ends.</b></p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFE;padding:44px;border:2px solid #E1E0D9;border-radius:16px">
+<div style="width:96px;height:8px;background:#2A78D6;border-radius:4px"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#256ABF">on top of the search</p>
+<h3 style="font-size:40px;font-weight:600;color:#121820">Anytime refinement</h3>
+<p style="font-size:30px;line-height:1.4">After the first solution the search continues. Revisits re-wire the explored graph with Dijkstra-style cost updates, and nodes that cannot beat the incumbent are pruned.</p>
+<p style="font-size:30px;line-height:1.4;color:#121820"><b>Eventually optimal, given time and memory.</b></p>
+</div>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6B7079">Plus 0.1 % random restarts. In the main benchmark every planner returns its first solution; refinement is studied separately.</p>
+<aside>LaCAM* keeps LaCAM's structure and adds two things. First, a swap technique inside PIBT: in a corridor two agents moving towards each other block each other forever, because PIBT never lets an agent move into the cell of the agent that pushed it. The swap rule checks whether a swap is both needed and possible, and if so lets the agent be pulled back to a branching vertex so the two can pass. Second, anytime refinement: configurations get costs (sum of loss), the explored graph is re-wired when a cheaper path to a known configuration is found, and the search prunes nodes whose lower bound cannot beat the current solution. That makes it eventually optimal. For a fair comparison, the main benchmark uses LaCAM*'s first solution, since EECBS, PBS and LNS2 also stop at their first solution.</aside>
+</section>
